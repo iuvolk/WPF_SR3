@@ -6,6 +6,11 @@
         xmlns:local="clr-namespace:WPF_SR3"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.CommandBindings>
+        <CommandBinding Command="local:MyCommands.Exit" Executed="ExitExecuted"/>
+        <CommandBinding Command="Open" Executed="OpenExecuted"/>    
+        <CommandBinding Command="Save" Executed="SaveExecuted"/>    
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -15,52 +20,52 @@
         </Grid.RowDefinitions>
         <Menu Margin="5" Padding="5" Grid.Row="0">
             <MenuItem Header="_Файл">
-                <MenuItem Header="_Открыть" Click="MenuItem_Click"/>
-                <MenuItem Header="_Сохранить" Click="MenuItem_Click_1"/>
+                <MenuItem Header="_Открыть" Command="ApplicationCommands.Open"/>
+                <MenuItem Header="_Сохранить" Command="ApplicationCommands.Save"/>
                 <Separator/>
-                <MenuItem Header="_Выход" Click="MenuItem_Click_2"/>
+                <MenuItem Command="local:MyCommands.Exit"/>
             </MenuItem>
-           
+
         </Menu>
 
 
         <ToolBarTray Grid.Row="1">
-            
+
             <ToolBar Margin="5" Padding="5">
-            <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" SelectionChanged="ComboBox_SelectionChanged">
-                <TextBlock Text ="Arial"/>
-                <TextBlock Text ="Times New Roman"/>
-                <TextBlock Text ="Verdana"/>
-            </ComboBox>
-            <ComboBox Margin="5" Padding="5" SelectedIndex="2" Width="50" SelectionChanged="ComboBox_SelectionChanged_1">
-                <TextBlock Text ="12"/>
-                <TextBlock Text ="14"/>
-                <TextBlock Text ="16"/>
-            </ComboBox>
-        </ToolBar>
-        <ToolBar Margin="5" Padding="5">
-            <ToggleButton Click="Button_Click" IsChecked="False">
-                <Image Source="Data/icons8-жирный-30.png"/>
-            </ToggleButton>
-            <Separator/>
+                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" SelectionChanged="ComboBox_SelectionChanged">
+                    <TextBlock Text ="Arial"/>
+                    <TextBlock Text ="Times New Roman"/>
+                    <TextBlock Text ="Verdana"/>
+                </ComboBox>
+                <ComboBox Margin="5" Padding="5" SelectedIndex="2" Width="50" SelectionChanged="ComboBox_SelectionChanged_1">
+                    <TextBlock Text ="12"/>
+                    <TextBlock Text ="14"/>
+                    <TextBlock Text ="16"/>
+                </ComboBox>
+            </ToolBar>
+            <ToolBar Margin="5" Padding="5">
+                <ToggleButton Click="Button_Click" IsChecked="False">
+                    <Image Source="Data/icons8-жирный-30.png"/>
+                </ToggleButton>
+                <Separator/>
                 <ToggleButton IsChecked="False" Click="ToggleButton_Click">
-                <Image Source="Data/icons8-курсив-30.png"/>
-            </ToggleButton>
-            <Separator/>
+                    <Image Source="Data/icons8-курсив-30.png"/>
+                </ToggleButton>
+                <Separator/>
                 <ToggleButton IsChecked="False" Click="ToggleButton_Click_1">
-                <Image Source="Data/icons8-подчеркивание-30.png"/>
-            </ToggleButton>
+                    <Image Source="Data/icons8-подчеркивание-30.png"/>
+                </ToggleButton>
                 <Separator/>
             </ToolBar>
-        <ToolBar>
+            <ToolBar>
                 <StackPanel VerticalAlignment="Center">
                     <RadioButton Content="Черный" IsChecked="True" Checked="RadioButton_Checked"/>
                     <RadioButton Content="Красный" Click="RadioButton_Click"/>
                 </StackPanel>
-        </ToolBar>
+            </ToolBar>
         </ToolBarTray>
         <TextBox x:Name="textBox" Grid.Row="2" Margin="5" Padding="5" FontSize="16" FontFamily="Arial" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto">
-            </TextBox>
+        </TextBox>
     </Grid>
 </Window>
  
